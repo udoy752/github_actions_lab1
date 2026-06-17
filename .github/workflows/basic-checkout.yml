@@ -12,7 +12,7 @@ jobs:
     steps: 
       # check the respository   
       - name: Checkout respository 
-        uses: checkout/checkout@v4 
+        uses: actions/checkout@v4 
       # list files 
       - name: List Files 
         run: ls -la 
