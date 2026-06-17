@@ -8,7 +8,9 @@ on:
 
 jobs: 
   basic-checkout: 
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    env:
+        CUSTOM_MESSAGE: "Hello from GitHub Actions!"
     steps: 
       # check the respository   
       - name: Checkout respository 
@@ -27,7 +29,21 @@ jobs:
         run: | 
           echo "node version: $(node --version)" 
           echo "python version: $(python --version)" 
-          echo "git version: $(git --version)" 
+          echo "git version: $(git --version)"  
+      - name: Current Date and time 
+        run: date 
+      - name: Available Disk Space 
+        run: df -h 
+      - name: Current space 
+        run: free -m 
+      - name: Conditional step
+        if: github.event_name == 'push'
+        run: echo "This was triggered by a push event"
+      
+      - name: Display custom message
+        run: echo "$CUSTOM_MESSAGE"
+      
+
 
        
      
