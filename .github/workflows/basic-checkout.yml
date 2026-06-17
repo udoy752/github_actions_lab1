@@ -1,0 +1,33 @@
+name: Basic Checkout Actions 
+
+on: 
+  push: 
+    branches: 
+      - main 
+
+
+jobs: 
+  basic-checkout: 
+    runs-on: ubuntu-latest 
+    steps: 
+      # check the respository   
+      - name: Checkout respository 
+        uses: checkout/checkout@v4 
+      # list files 
+      - name: List Files 
+        run: ls -la 
+      # check system info 
+      - name: Check System Info 
+        run: | 
+          echo "Repository: $GITHUB_REPOSITORY"  
+          echo "Operating System: $(uname -a)" 
+          echo "Current Working Directory: $(pwd)"
+      # check software version 
+      - name: Check software version 
+        run: | 
+          echo "node version: $(node --version)" 
+          echo "python version: $(python --version)" 
+          echo "git version: $(git --version)" 
+
+       
+     
